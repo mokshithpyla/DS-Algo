@@ -9,4 +9,4 @@ def fib(n):
     memo[n]=f
 memo={}
 n=int(input("Enter the value of n: "))
-print('The nth fibonacci term is:',fib(n))
+print('The nth fibonacci tgit erm is:',fib(n))
