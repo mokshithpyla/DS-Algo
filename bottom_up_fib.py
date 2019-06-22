@@ -1,4 +1,5 @@
 
+# CS Dojo
 # def fib(n):
 #     if n==1 or n==2:
 #         return 1
@@ -12,6 +13,7 @@
 # n=int(input('Enter value of n:'))
 # print(n,'th fibonacci term is: ',fib(n),sep='')
 
+# MIT Open Courseware
 fib={}
 f=0
 n=int(input("Enter the value of n: "))
@@ -19,6 +21,6 @@ for i in range(1,n+1):
     if i <= 2:
         f = 1
     else:
-        f=fib[i-1] + fib[i-2]
+        f=fib[i-1] + fib[i-2] # Constructing the subproblems from the beginning 
     fib[i] = f
 print(fib[n])
