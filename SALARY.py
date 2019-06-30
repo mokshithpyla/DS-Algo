@@ -6,6 +6,7 @@ for _ in range(t):
     s=list(map(int,input().split()))
     turns = 0
     s.sort()
+    print(s)
     for i in range(n):
         turns+=s[i]-s[0]
     print(turns)
