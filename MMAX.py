@@ -2,26 +2,28 @@
 
 def minDistribute():
     f = k//n
-    a = [f]*n
+    a = [0]*n
     r = k % n
 
     if k % n == 0:
         print('0')
         return
     else:
-        for i in range(n):
+        for i in range(r):
             if r == 0:
                 break
             a[i] += 1
             r -= 1
-        maxDistribute(a)
+        maxDistribute(a, k % n)
         return
 
 
-def maxDistribute(a):
+def maxDistribute(a, r):
     b = [0]*n
-    c1 = a.count(a[0])  # 2
-    c2 = a.count(a[n-1])  # 1
+    # c1 = a.count(a[0])  # 2
+    # c2 = a.count(a[n-1])  # 1
+    c1 = r
+    c2 =n - r
     if c1 < c2:
         less = c1
         less_no = a[0]
