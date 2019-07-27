@@ -2,20 +2,20 @@
 # https://www.codechef.com/submit/FRGTNLNG
 t=int(input())
 for _ in range(t):
-    n,k=map(int,input().split())
+    n, k = map(int,input().split())
     dictionary=input().split()
-    phrases=[]
+    phrases = []
     for each in range(k):
         phrases.append(input().split())
     for each in dictionary:
-        flag=False
+        flag = False
         for phrase in phrases:
-            i=1
+            i = 1
             if each in phrase:
-                flag=True
+                flag = True
                 break
-        if flag==True:
-            print('YES',end=' ')
+        if flag:
+            print('YES', end=' ')
         else:
             print('NO', end=' ')
 

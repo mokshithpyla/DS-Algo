@@ -23,7 +23,7 @@ def maxDistribute(a, r):
     # c1 = a.count(a[0])  # 2
     # c2 = a.count(a[n-1])  # 1
     c1 = r
-    c2 =n - r
+    c2 = n - r
     if c1 < c2:
         less = c1
         less_no = a[0]
