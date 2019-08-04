@@ -6,7 +6,7 @@ class Solution:
         max_sum = 0
         j = 0
         for i in range(len(A)):
-            if A[i]>=0:
+            if A[i] >= 0:
                 max_sum += A[i]
             else:
                 max_sub_array[max_sum] = A[j:i]
