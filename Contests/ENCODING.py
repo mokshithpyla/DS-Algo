@@ -1,36 +1,33 @@
-from collections import Counter
-t = int(input())
-for _ in range(t):
-    nl, L = map(int, input().split())
-    nr, R = map(int, input().split())
-    for x in range(L, R+1):
+# cook your dish here
+def finalNum(num):
+    temp = 0
+    placeVal = 1
 
-    # fx = 0
-    # for x in range(L, R+1):
-    #     number_in_place = list(map(int, str(x)))
-    #     prev_num = next_num = 0
-    #     n = len(number_in_place)
-    #     for i in range(n):
-    #         if i is 0:
-    #             prev_num = -1
-    #         else:
-    #             prev_num = number_in_place[i-1]
-    #         if i is n-1:
-    #             next_num = -1
-    #         else:
-    #             next_num = number_in_place[i+1]
-    #         if number_in_place[i] is not prev_num and number_in_place[i] is next_num:
-    #             fx += number_in_place[i] * pow(10, n-i-1)
-    #             continue
-    #         if number_in_place[i] is prev_num and number_in_place[i] is not next_num:
-    #             continue
-    #         if number_in_place[i] is prev_num and number_in_place[i] is next_num:
-    #             continue
-    #         fx += number_in_place[i] * pow(10, n-i-1)
-    # print(fx)
-    #
+    for j in range(1,len(num))[::-1]:
+        if num[j-1] != num[j]:
+            temp += int(num[j])*placeVal
+        placeVal *= 10
 
-# N = [1,2,2,3,3,3,4,4,4,4,5,5,5,5,5]
-# C = Counter(N)
-#
-# print ([ [k,]*v for k,v in C.items()])
+    temp += int(num[0])*placeVal
+    return temp%modu
+
+for _ in range(int(input())):
+
+    nl, l = map(int,input().split())
+    nr, r = map(int,input().split())
+
+    modu = 1000000007
+    totalSum = 0
+
+    for i in range(l,r+1):
+        totalSum = (totalSum + finalNum(str(i)))%modu
+
+    print(totalSum)
+
+# 3
+# 1 9
+# 2 97
+# 1 8
+# 2 12
+# 1 1
+# 1 8
