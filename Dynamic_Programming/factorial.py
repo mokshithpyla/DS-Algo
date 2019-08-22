@@ -1,6 +1,8 @@
 def fact(N):
     if N in memo:
+        print('memoized')
         return memo[N]
+
     if N is 1 or N is 0:
         return 1
     else:
@@ -9,3 +11,6 @@ def fact(N):
     return f
 memo = {}
 print(fact(5))
+print(memo)
+print(fact(6))
+print(memo)
