@@ -23,4 +23,5 @@ for i in range(1, n+1):
     else:
         f = fib[i-1] + fib[i-2] # Constructing the subproblems from the beginning
     fib[i] = f
-print(fib[n])
+    print(f)
+# print(fib[n])

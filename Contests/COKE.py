@@ -18,7 +18,9 @@ for _ in range(t):
         else:
             temperature[i] = k
         if temperature[i] >= l and temperature[i] <= r:
+            print(temperature[i], price[i])
             cheap_prices.append(price[i])
+    print(cheap_prices)
     if cheap_prices:
         print(min(cheap_prices))
     else:
