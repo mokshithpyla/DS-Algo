@@ -12,5 +12,5 @@ def fact(N):
 memo = {}
 print(fact(5))
 print(memo)
-print(fact(6))
+print(fact(10000))
 print(memo)

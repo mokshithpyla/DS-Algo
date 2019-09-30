@@ -21,13 +21,13 @@
 
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        if len(nums1)>len(nums2): nums1,nums2 = nums2,nums1
+        if len(nums1) > len(nums2): nums1,nums2 = nums2,nums1
         D = {}
-        for i in nums2:
-            D[i] = D[i]+1 if i in D else 1
+        for each in nums2:
+            D[each] = D[each]+1 if each in D else 1
         nums2 = []
         for i in nums1:
-            if i in D and D[i]>0:
+            if i in D and D[i] > 0:
                 nums2.append(i)
                 D[i] -= 1
         return nums2
