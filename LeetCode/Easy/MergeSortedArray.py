@@ -13,32 +13,41 @@
 # Output: [1,2,2,3,5,6]
 
 
-class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
         """
-        Do not return anything, modify nums1 in-place instead.
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        i = 0
+        # push over elements in nums1
+        idx = len(nums1) - 1
+        i = m - 1
+        while i >= 0:
+            nums1[idx] = nums1[i]
+            i = i - 1
+            idx = idx - 1
+
+        # merge
         j = 0
-        nums1 = nums1[:len(nums1)-len(nums2)]
-        nums3 = [None]*(len(nums1)+len(nums2))
+        i = n
         k = 0
-        while i < len(nums1) and j < len(nums2):
+        while i < (m + n) and j < n:
             if nums1[i] < nums2[j]:
-                nums3[k] = nums1[i]
-                k += 1
-                i += 1
+                nums1[k] = nums1[i]
+                i = i + 1
             else:
-                nums3[k] = nums2[j]
-                j += 1
-                k += 1
-        while i< len(nums1)-len(nums2):
-            nums3[k] = nums1[i]
+                nums1[k] = nums2[j]
+                j = j + 1
             k = k + 1
-            i = i + 1
-        while j < len(nums2):
-            nums3[k] = nums2[j]
-            k = k + 1
-            j = j + 1
-        print(nums3)
-        nums1 = nums3[:]
+
+        # copy over any remaining elements from nums2
+        if j < n:
+            k = n - 1
+            l = m + n - 1
+            while k >= j:
+                nums1[l] = nums2[k]
+                k = k - 1
+                l = l - 1
