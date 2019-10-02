@@ -21,17 +21,37 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if nums:
-            if len(nums) == 1:
-                return nums[0]
-            # dp = [0]*len(nums)
-            # dp[0] = nums[0]
-            pre = nums[0]
-            curr = max(nums[0],nums[1])
-            # dp[1] = max(nums[0],nums[1])
-            for i in range(2, len(nums)):
-                # dp[i] = max(dp[i-2] + nums[i], dp[i-1])
-                curr, pre = max(pre+nums[i], curr), curr
-            return curr
-        else:
+        #         if nums:
+        #             if len(nums)==1:
+        #                 return nums[0]
+        #             # dp = [0]*len(nums)
+        #             # dp[0] = nums[0]
+        #             pre = nums[0]
+        #             curr = max(nums[0],nums[1])
+        #             # dp[1] = max(nums[0],nums[1])
+        #             for i in range(2, len(nums)):
+        #                 # dp[i] = max(dp[i-2] + nums[i], dp[i-1])
+        #                 curr, pre = max(pre+nums[i], curr), curr
+        #             return curr
+        #         else:
+        #             return 0
+
+        # Recursive :
+
+        def go(index):
+            if index >= len(nums):
+                return 0
+            elif index in visited:
+                return visited[index]
+            else:
+                max_money = max(go(index+1), nums[index] + go(index + 2))
+                visited[index] = max_money
+                return visited[index]
+        index = 0
+        visited = {}
+        if not nums:
             return 0
+        if len(nums) <= 2:
+            return max(nums)
+        else:
+            return go(index)
