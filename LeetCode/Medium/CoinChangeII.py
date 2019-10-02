@@ -15,7 +15,7 @@ class Solution(object):
         if amount == 0 and not coins:
             return 1
         for coin in coins:
-            for i in range(coin, amount+1):
+            for i in range(1, amount+1):
                 dp[i] += dp[i-coin]
         return dp[-1]
 

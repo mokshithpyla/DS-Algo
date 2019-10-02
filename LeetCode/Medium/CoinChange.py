@@ -40,17 +40,16 @@ class Solution(object):
                 return -1
             if rem == 0:
                 return 0
-            if rem - 1 in count:
-                return count[rem-1]
+            if rem  in count:
+                return count[rem]
             min_number = float('inf')
             for coin in coins:
                 res = go(coins, rem - coin, count)
                 if res >= 0 and res < min_number:
                     min_number = 1 + res
-            count[rem - 1] = min_number if min_number != float('inf') else -1
-            return count[rem -1]
+            count[rem] = min_number if min_number != float('inf') else -1
+            return count[rem]
         count = {}
-        visited = {}
         if amount < 1:
             return 0
         else:
