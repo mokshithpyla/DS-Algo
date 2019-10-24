@@ -9,6 +9,22 @@
 # You must do this in-place without making a copy of the array.
 # Minimize the total number of operations.
 
+#
+# class Solution(object):
+#     def moveZeroes(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: None Do not return anything, modify nums in-place instead.
+#         """
+#         non_zero = []
+#         for each in nums:
+#             if each:
+#                 non_zero.append(each)
+#         for i in range(len(nums)):
+#             if i < len(non_zero):
+#                 nums[i] = non_zero[i]
+#             else:
+#                 nums[i] = 0
 
 class Solution(object):
     def moveZeroes(self, nums):
@@ -16,12 +32,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        non_zero = []
-        for each in nums:
-            if each:
-                non_zero.append(each)
+        lastSeenZero = 0
         for i in range(len(nums)):
-            if i < len(non_zero):
-                nums[i] = non_zero[i]
-            else:
-                nums[i] = 0
+            if nums[i] != 0:
+                temp = nums[i]
+                nums[i] = nums[lastSeenZero]
+                nums[lastSeenZero] = temp
+                lastSeenZero += 1
