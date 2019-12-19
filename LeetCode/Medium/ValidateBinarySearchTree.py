@@ -14,22 +14,40 @@
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
-    def isValidBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        if not root:
-            return True
-        stack = []
-        stack.append((root, float('-inf'), float('inf')))
-        while stack:
-            root, lower, upper = stack.pop()
-            if not root:
-                continue
-            if root.val <= lower or root.val >= upper:
+# class Solution(object):
+#     def isValidBST(self, root):
+#         """
+#         :type root: TreeNode
+#         :rtype: bool
+#         """
+#         if not root:
+#             return True
+#         stack = []
+#         stack.append((root, float('-inf'), float('inf')))
+#         while stack:
+#             root, lower, upper = stack.pop()
+#             if not root:
+#                 continue
+#             if root.val <= lower or root.val >= upper:
+#                 return False
+#             stack.append((root.right, root.val, upper))
+#             stack.append((root.left, lower, root.val))
+#         return True
+
+
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        def isBST(node, lower, upper):
+            if not node:
+                return True
+            val = node.val
+            if val <= lower or val >= upper:
                 return False
-            stack.append((root.right, root.val, upper))
-            stack.append((root.left, lower, root.val))
-        return True
+            if not isBST(node.right, val, upper):
+                return False
+            if not isBST(node.left, lower, val):
+                return False
+            return True
+
+        return isBST(root, float('-inf'), float('inf'))
+

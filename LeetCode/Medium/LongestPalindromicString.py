@@ -25,3 +25,16 @@ class Solution:
             longestSoFar = findPalindrome(i, i+1)
             ans = longestSoFar if len(longestSoFar) > len(ans) else ans
         return ans
+
+# class Solution:
+#     def longestPalindrome(self, s: str) -> str:
+#         ans = ''
+#         for center in range(2*len(s)):
+#             left = center // 2
+#             right = left + center % 2
+#             while left >= 0 and right < len(s) and s[left] == s[right]:
+#                 palindrome = s[left:right+1]
+#                 left -= 1
+#                 right += 1
+#             ans = palindrome if len(palindrome) > len(ans) else ans
+#         return ans
