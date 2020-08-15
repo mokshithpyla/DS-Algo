@@ -32,7 +32,7 @@ class Solution:
         stack = []
         ans = True
         for i in range(len(s)):
-            if s[i] in ['(','[','{']:
+            if s[i] in ['(', '[', '{']:
                 stack.append(s[i])
             else:
                 if stack:
