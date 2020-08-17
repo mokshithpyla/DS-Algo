@@ -36,21 +36,19 @@
 #   print("Case #{}: {}".format(_+1, ans))
 
 # Iterative: 
-def solve(n, k, p):
-    beauty = []
-    for x in range(n+1):
-        beauty.append([0]*(p+1))
+def findMaxBeauty(n, k, p):
+    beauty = [[0]*(p + 1) for x in range(n+1)]
     for x in range(n):
         beauty[x+1] = beauty[x][:]
-        stack = list(map(int, input().split()))
         s = 0
+        stack = list(map(int, input().split()))
         for y in range(k):
             s += stack[y]
             for z in range(p - y):
-                beauty[x + 1][z + y + 1] = max(beauty[x][z] + s, beauty[x + 1][ y + 1 + z])
+                beauty[x + 1][z + y + 1] = max(beauty[x + 1][z + y + 1], s + beauty[x][z])
     return beauty[n][p]
 t = int(input())
 for _ in range(t):
-  [n, k, p] = list(map(int, input().split()))
-  ans = solve(n, k, p)
-  print("Case #{}: {}".format(_+1, ans))
+    n, k, p = map(int, input().split())
+    ans = findMaxBeauty(n, k, p)
+    print("Case #{}: {}".format(_+1, ans))
