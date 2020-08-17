@@ -1,4 +1,4 @@
-def check(diff):
+def f(diff):
   k1 = 0
   for i in range(n-1):
     k1 += (sessions[i + 1] - sessions[i] - 1 ) // diff
@@ -9,7 +9,7 @@ def check(diff):
 def search(left, right):
   while left < right:
     mid = (left + right) // 2
-    if check(mid):
+    if f(mid):
       right = mid
     else:
       left = mid + 1
