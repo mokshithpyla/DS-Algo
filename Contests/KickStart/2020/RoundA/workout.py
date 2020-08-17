@@ -1,7 +1,11 @@
-def f(diff):
+# The key concept here is flipping the question 
+# to formulate number of sessions required to get the optimal difficulty(maximum difference)
+# i.e f(d) = (sessions[i + 1] - sessions[i] - 1 ) // d
+# So Binary search for d between the limits [1, 10**9] where f(d) <= k
+def f(d):
   k1 = 0
   for i in range(n-1):
-    k1 += (sessions[i + 1] - sessions[i] - 1 ) // diff
+    k1 += (sessions[i + 1] - sessions[i] - 1 ) // d
   if k1 <= k:
     return True
   return False
